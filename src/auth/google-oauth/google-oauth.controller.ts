@@ -17,13 +17,13 @@ export class GoogleOauthController {
   ) {}
   @Get()
   @UseGuards(GoogleOauthGuard)
-  async googleAuth() {
+  googleAuth() {
     throw new HttpException('unauthorized', 401);
   }
 
   @Get('redirect')
   @UseGuards(GoogleOauthGuard)
-  async googleAuthRedirect(@Req() req, @Res() res) {
+  googleAuthRedirect(@Req() req, @Res() res) {
     // const user = this.userService.findUser(req.user.provider, req.user.id);
     const user = true;
     if (user) {
@@ -37,10 +37,10 @@ export class GoogleOauthController {
     // id를 db에서 체크 후, 있다면 login과 jwt발급, 없다면 회원가입
   }
 
-  //jwt token validating
+  //jwt token validating check
   @Get('profile')
   @UseGuards(JwtAuthGuard)
-  async getProfile(@Req() req) {
+  getProfile(@Req() req) {
     return req.user;
   }
 }
