@@ -19,6 +19,6 @@ const jwtConfig = config.get('jwt');
     }),
   ],
   providers: [JwtAuthStrategy, JwtAuthService],
-  exports: [JwtAuthService, JwtModule],
+  exports: [JwtAuthService],
 })
 export class JwtAuthModule {}

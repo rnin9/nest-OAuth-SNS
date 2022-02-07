@@ -1,17 +1,24 @@
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from '../jwt-auth/jwt-auth.guard';
 import { JwtAuthService } from '../jwt-auth/jwt-auth.service';
 import { GoogleOauthGuard } from './google-oauth.guard';
 
-@Controller('google-oauth')
+@Controller('api/login/google-oauth')
 export class GoogleOauthController {
   constructor(
     private jwtAuthService: JwtAuthService, // private userService: UserService,
   ) {}
   @Get()
   @UseGuards(GoogleOauthGuard)
-  async googleAuth(@Req() req) {
-    //요청 url
+  async googleAuth() {
+    throw new HttpException('unauthorized', 401);
   }
 
   @Get('redirect')
